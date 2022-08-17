@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .Box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- [ { "color": { "r": 70, "g": 213, "b": 25, "a": 1 }, "fontFamily":
+    "zh173hqxt", "fontSize": 57, "fontWeight": "bold", "textAlign": "center",
+    "textDecoration": "line-through", "opacity": 255, "letterSpacing": 15,
+    "text": "秋" }, { "color": { "r": 210, "g": 243, "b": 20, "a": 1 },
+    "fontFamily": "zh173hqxt", "fontSize": 57, "fontWeight": "bold",
+    "textAlign": "center", "opacity": 55, "letterSpacing": 15, "text": "日" }, {
+    "color": { "r": 20, "g": 151, "b": 243, "a": 1 }, "fontFamily": "zh173hqxt",
+    "fontSize": 57, "fontWeight": "normal", "textAlign": "center",
+    "textDecoration": "underline", "opacity": 255, "letterSpacing": 15, "text":
+    "景" }, { "color": { "r": 109, "g": 20, "b": 243, "a": 1 }, "fontFamily":
+    "zh58hczh", "fontSize": 57, "fontWeight": "normal", "textAlign": "center",
+    "fontStyle": "italic", "opacity": 255, "letterSpacing": 15, "text": "初" },
+    { "color": { "r": 213, "g": 25, "b": 25, "a": 1 }, "fontFamily":
+    "zh173hqxt", "fontSize": 57, "fontWeight": "normal", "textAlign": "center",
+    "opacity": 255, "letterSpacing": 15, "text": "微" } ] -->
+    <div class="Box"></div>
+    <script>
+        // 根据arrStyle数据渲染文字
+      const arrStyle = [
+        {
+          color: {
+            r: 70,
+            g: 213,
+            b: 25,
+            a: 1,
+          },
+          fontFamily: "zh173hqxt",
+          fontSize: 57,
+          fontWeight: "bold",
+          textAlign: "center",
+          textDecoration: "line-through",
+          opacity: 255,
+          letterSpacing: 15,
+          text: "秋",
+        },
+        {
+          color: {
+            r: 210,
+            g: 243,
+            b: 20,
+            a: 1,
+          },
+          fontFamily: "zh173hqxt",
+          fontSize: 57,
+          fontWeight: "bold",
+          textAlign: "center",
+          opacity: 55,
+          letterSpacing: 15,
+          text: "日",
+        },
+        {
+          color: {
+            r: 20,
+            g: 151,
+            b: 243,
+            a: 1,
+          },
+          fontFamily: "zh173hqxt",
+          fontSize: 57,
+          fontWeight: "normal",
+          textAlign: "center",
+          textDecoration: "underline",
+          opacity: 255,
+          letterSpacing: 15,
+          text: "景",
+        },
+        {
+          color: {
+            r: 109,
+            g: 20,
+            b: 243,
+            a: 1,
+          },
+          fontFamily: "zh58hczh",
+          fontSize: 57,
+          fontWeight: "normal",
+          textAlign: "center",
+          fontStyle: "italic",
+          opacity: 255,
+          letterSpacing: 15,
+          text: "初",
+        },
+        {
+          color: {
+            r: 213,
+            g: 25,
+            b: 25,
+            a: 1,
+          },
+          fontFamily: "zh173hqxt",
+          fontSize: 57,
+          fontWeight: "normal",
+          textAlign: "center",
+          opacity: 255,
+          letterSpacing: 15,
+          text: "微",
+        },
+      ];
+
+      const fragment = document.createDocumentFragment();
+      const Box = document.getElementsByClassName('Box');
+      arrStyle.forEach((item, index) => {
+        const p = document.createElement("p");
+        p.innerText = item.text;
+        const r = item.color.r;
+        const g = item.color.g;
+        const b = item.color.b;
+        const a = item.color.a;
+        const rgba = `rgba(${r},${g},${b},${a})`
+        p.style.color = rgba;
+        p.style.fontSize = item.fontSize + 'px';
+        p.style.letterSpacing = item.letterSpacing + 'px';
+        for (i in item) {
+            if (i !== 'text' || i !== 'color') {
+                // let finalStr = '';
+                // const arrStr = i.split('');
+                // finalStr = arrStr.map((str, index) => {
+                //     if(str.toUpperCase() === str) {
+                //         return '-' + str.toLowerCase();
+                //     } else {
+                //         return str;
+                //     }
+                // })
+                // const finalKey = finalStr.join('');
+                
+                // p.style[finalKey] = item[i];
+                // console.log(finalKey)
+                // console.log(p.style[finalKey])
+                p.style[i] = item[i]
+                fragment.appendChild(p)
+            }
+        }
+      })
+      Box[0].appendChild(fragment);
+    </script>
+  </body>
+</html>
