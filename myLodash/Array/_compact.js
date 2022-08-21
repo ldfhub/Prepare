@@ -18,7 +18,6 @@ export default function _compact(arr) {
             stack.push(arr[i])
         }
     }
-    console.log(stack)
     return stack;
 }
 const res = _compact(arr);
